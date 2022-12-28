@@ -2,11 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #000000;
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+/* Contains html, body, heading */
+@layer base {
+  body {
+    @apply bg-[#141414] text-white m-0 p-0 box-border font-sans;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+/* Custom classnames, used in the components */
+@layer components {
+  .navbar {
+    @apply flex top-0 py-4 z-50 items-center justify-between w-full transition-all;
+  }
+
+  .navbarLinks {
+    @apply cursor-pointer text-sm font-light text-[#e5e5e5] transition duration-100 hover:text-[#b3b3b3];
+  }
 }
