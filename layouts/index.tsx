@@ -4,9 +4,9 @@ import { Footer } from './Footer';
 export const Layout = ({ children }: any) => {
   return (
     // For giving padding to the whole Layout
-    <div className="px-8 py-2">
+    <div>
       <Navbar />
-      <main>{children}</main>
+      <main className="px-8 py-2">{children}</main>
       <Footer />
     </div>
   );

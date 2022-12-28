@@ -29,7 +29,7 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`navbar ${isScrolled && 'text-red-600'}`}>
+    <nav className={`navbar ${isScrolled && 'bg-red-600'}`}>
       {/* Left Section of the Navbar */}
       <div className="flex items-center gap-x-5 md:gap-x-10">
         <img
