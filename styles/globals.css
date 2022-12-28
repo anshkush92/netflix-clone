@@ -13,7 +13,7 @@
 /* Custom classnames, used in the components */
 @layer components {
   .navbar {
-    @apply flex top-0 px-8 py-4 z-50 items-center justify-between w-full transition-all;
+    @apply flex fixed top-0 px-8 py-4 z-50 items-center justify-between w-full transition-all;
   }
 
   .navbarLinks {
