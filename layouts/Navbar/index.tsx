@@ -10,6 +10,11 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   // This useEffet will be used to change the navbar color when the user scrolls down
+  /**
+   * @param {function} callback - The callback function to be called when the event is triggered
+   * @param {array} dependencies - The dependencies of the useEffect
+   * @returns {void}
+   */
   useEffect(() => {
     console.log('useEffect called');
     const handleScroll = () => {

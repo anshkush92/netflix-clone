@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Banner from '../components/Banner';
+import requests from '../utils/requests';
 
 export default function Home() {
   return (
