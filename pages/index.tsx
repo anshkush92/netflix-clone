@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Banner from '../components/Banner';
 import requests from '../utils/requests';
-import Movie from '../types/Movie';
 import Props from '../types/Home/Props';
 
 const Home = ({
@@ -26,7 +25,7 @@ const Home = ({
       <main>
         <section>
           {/* Banner component of Netflix */}
-          <Banner />
+          <Banner netflixOriginals={netflixOriginals} />
           {/* Modal for showing the trailer and more information about the playing show */}
         </section>
 
