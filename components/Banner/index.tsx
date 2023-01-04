@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
+import { BASE_URL_IMAGE } from '../../utils/constants';
 import Movie from '../../types/Movie';
 
 type Props = {
@@ -22,7 +24,25 @@ const Banner = ({ netflixOriginals }: Props) => {
 
   console.log(movie);
 
-  return <div>Banner</div>;
+  return (
+    <div>
+      {/* Container for the <Image /> */}
+      <div className="absolute top-0 left-0 h-[95vh] -z-10 w-full">
+        {/* When using the layout="fill", the parent should be "absolute" or "relative" */}
+        <Image
+          src={`${BASE_URL_IMAGE}${movie?.backdrop_path || movie?.poster_path}`}
+          alt={movie?.title || 'default'}
+          fill
+          style={{
+            objectFit: 'cover',
+          }}
+        />
+      </div>
+      <div>
+        <h1>{movie?.title}</h1>
+      </div>
+    </div>
+  );
 };
 
 export default Banner;
