@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+import { BsFillPlayFill, BsInfoCircle } from 'react-icons/bs';
+
 import { BASE_URL_IMAGE } from '../../utils/constants';
 import Movie from '../../types/Movie';
 
@@ -39,12 +41,24 @@ const Banner = ({ netflixOriginals }: Props) => {
         />
       </div>
 
-      <h1 className="max-w-md text-2xl font-bold md:text-3xl lg:text-5xl">
+      <h1 className="max-w-lg text-2xl font-bold md:text-3xl lg:text-5xl">
         {movie?.title}
       </h1>
-      <p className="max-w-xs md:max-w-lg lg:max-w-2xl text-xs md:text-lg">
+      <p className="max-w-sm text-shadow md:max-w-lg lg:max-w-2xl text-xs md:text-lg">
         {movie?.overview}
       </p>
+
+      <div className="flex gap-x-3">
+        <button className="banner-buttons bg-white text-black">
+          <BsFillPlayFill className="banner-buttons-icon" />
+          Play
+        </button>
+        <button className="banner-buttons bg-[gray]/70">
+          {' '}
+          <BsInfoCircle className="banner-buttons-icon" />
+          More info
+        </button>
+      </div>
     </div>
   );
 };
