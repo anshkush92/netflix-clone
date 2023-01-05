@@ -44,18 +44,18 @@ const Banner = ({ netflixOriginals }: Props) => {
       <h1 className="max-w-lg text-2xl font-bold md:text-3xl lg:text-5xl">
         {movie?.title}
       </h1>
-      <p className="max-w-sm text-shadow md:max-w-lg lg:max-w-2xl text-xs md:text-lg">
+      <p className="max-w-sm text-shadow md:max-w-lg lg:max-w-2xl text-xs sm:text-sm md:text-base">
         {movie?.overview}
       </p>
 
       <div className="flex gap-x-3">
         <button className="banner-buttons bg-white text-black">
-          <BsFillPlayFill className="banner-buttons-icon" />
+          <BsFillPlayFill className="banner-buttons-icon text-black" />
           Play
         </button>
         <button className="banner-buttons bg-[gray]/70">
           {' '}
-          <BsInfoCircle className="banner-buttons-icon" />
+          <BsInfoCircle className="banner-buttons-icon text-white" />
           More info
         </button>
       </div>
