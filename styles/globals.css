@@ -27,4 +27,8 @@
   .banner-buttons-icon {
     @apply h-4 w-4 md:h-6 md:w-6;
   }
+
+  .row-icons {
+    @apply h-8 w-8 absolute top-0 z-50 m-auto cursor-pointer hover:scale-125 opacity-0 transition-all duration-200 ease-in-out;
+  }
 }

@@ -33,8 +33,10 @@ const Home = ({
 
         <section>
           {/* Each row for different types of the movies */}
+          <Row title="My List" movies={[]} />
           <Row title="Netflix Originals" movies={netflixOriginals} />
 
+          {/* Group of 3 components */}
           <Row title="Trending Now" movies={trendingNow} />
           <Row title="Top Rated" movies={topRated} />
           <Row title="Action Movies" movies={actionMovies} />
