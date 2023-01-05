@@ -25,7 +25,7 @@ const Banner = ({ netflixOriginals }: Props) => {
   console.log(movie);
 
   return (
-    <div>
+    <div className="flex flex-col gap-y-2 py-16 md:py-40">
       {/* Container for the <Image /> */}
       <div className="absolute top-0 left-0 h-[95vh] -z-10 w-full">
         {/* When using the layout="fill", the parent should be "absolute" or "relative" */}
@@ -38,9 +38,13 @@ const Banner = ({ netflixOriginals }: Props) => {
           }}
         />
       </div>
-      <div>
-        <h1>{movie?.title}</h1>
-      </div>
+
+      <h1 className="max-w-md text-2xl font-bold md:text-3xl lg:text-5xl">
+        {movie?.title}
+      </h1>
+      <p className="max-w-xs md:max-w-lg lg:max-w-2xl text-xs md:text-lg">
+        {movie?.overview}
+      </p>
     </div>
   );
 };
