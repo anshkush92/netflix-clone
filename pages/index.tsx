@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import Banner from '../components/Banner';
 import requests from '../utils/requests';
 import Props from '../types/Home/Props';
+
+import Banner from '../components/Banner';
+import Row from '../components/Row';
 
 const Home = ({
   netflixOriginals,
@@ -30,10 +32,16 @@ const Home = ({
         </section>
 
         <section>
-          {/* Different Rows of the Netflix */}
-          {/* Row */}
-          {/* Row */}
-          {/* Row */}
+          {/* Each row for different types of the movies */}
+          <Row title="Netflix Originals" movies={netflixOriginals} />
+
+          <Row title="Trending Now" movies={trendingNow} />
+          <Row title="Top Rated" movies={topRated} />
+          <Row title="Action Movies" movies={actionMovies} />
+
+          <Row title="Comedy Movies" movies={comedyMovies} />
+          <Row title="Romance Movies" movies={romanceMovies} />
+          <Row title="Documentaries" movies={documentaries} />
         </section>
       </main>
       {/* Modal */}
