@@ -24,7 +24,7 @@ const Home = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="relative px-8 py-4">
+      <main className="relative px-4 sm:px-8 py-4">
         <section>
           {/* Banner component of Netflix */}
           <Banner netflixOriginals={netflixOriginals} />
