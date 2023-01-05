@@ -13,7 +13,7 @@
 /* Custom classnames, used in the components */
 @layer components {
   .navbar {
-    @apply flex fixed top-0 px-8 py-4 z-50 items-center justify-between w-full transition-all;
+    @apply flex fixed top-0 px-4 sm:px-8  py-4 z-[1000] items-center justify-between w-full transition-all;
   }
 
   .navbarLinks {
@@ -29,6 +29,6 @@
   }
 
   .row-icons {
-    @apply h-8 w-8 absolute top-0 z-50 m-auto cursor-pointer hover:scale-125 opacity-0 transition-all duration-200 ease-in-out;
+    @apply h-8 w-8 absolute top-1/2 bottom-1/2 z-[150] m-auto cursor-pointer hover:scale-125 opacity-0 transition-all duration-200 ease-in-out;
   }
 }
