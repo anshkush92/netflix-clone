@@ -27,7 +27,7 @@ const Banner = ({ netflixOriginals }: Props) => {
   console.log(movie);
 
   return (
-    <div className="flex flex-col gap-y-2 py-16 md:py-40">
+    <div className="flex flex-col  gap-y-2 pt-16 pb-8 lg:pt-40 lg:pb-20">
       {/* Container for the <Image /> */}
       <div className="absolute top-0 left-0 h-[95vh] -z-10 w-full">
         {/* When using the layout="fill", the parent should be "absolute" or "relative" */}

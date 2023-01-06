@@ -29,6 +29,6 @@
   }
 
   .row-icons {
-    @apply h-8 w-8 absolute top-1/2 bottom-1/2 z-[150] m-auto cursor-pointer hover:scale-125 opacity-0 transition-all duration-200 ease-in-out;
+    @apply w-8 absolute top-1/2 bottom-1/2 z-[150] m-auto cursor-pointer opacity-0 transition-all duration-200 ease-in-out bg-[black]/20 h-full;
   }
 }

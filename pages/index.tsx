@@ -31,7 +31,7 @@ const Home = ({
           {/* Modal for showing the trailer and more information about the playing show */}
         </section>
 
-        <section>
+        <section className="flex flex-col gap-y-10">
           {/* Each row for different types of the movies */}
           <Row title="My List" movies={[]} />
           <Row title="Netflix Originals" movies={netflixOriginals} />
