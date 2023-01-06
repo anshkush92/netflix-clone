@@ -5,7 +5,7 @@
 /* Contains html, body, heading */
 @layer base {
   body {
-    @apply bg-[#141414] text-white m-0 p-0 box-border font-sans;
+    @apply bg-[#141414] text-white m-0 p-0 box-border font-sans !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-red-500;
     font-family: 'Roboto', sans-serif;
   }
 }
