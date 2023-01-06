@@ -24,8 +24,6 @@ const Banner = ({ netflixOriginals }: Props) => {
     );
   }, [netflixOriginals]);
 
-  console.log(movie);
-
   return (
     <div className="flex flex-col  gap-y-2 pt-16 pb-8 lg:pt-40 lg:pb-20">
       {/* Container for the <Image /> */}

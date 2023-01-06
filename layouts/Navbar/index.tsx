@@ -16,7 +16,6 @@ export const Navbar = () => {
    * @returns {void}
    */
   useEffect(() => {
-    console.log('useEffect called');
     const handleScroll = () => {
       // Means the user has scrolled down (even by a single pixel)
       if (window.scrollY > 0) {
