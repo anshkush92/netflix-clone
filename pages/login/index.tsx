@@ -13,7 +13,7 @@ type Inputs = {
 /* Rules to disable the warning when using <img /> instead of <Image /> */
 /* eslint-disable @next/next/no-img-element */
 const Login = () => {
-  const [loginDetails, setLoginDetails] = useState<object | null>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const {
     register,
@@ -21,8 +21,19 @@ const Login = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  console.log('🚀 ~ file: index.tsx:22 ~ Login ~ errors', errors);
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  /**
+   * @param data - Data from the form inputs (email and password)
+   * @function onSubmit - Function to handle the form submit
+   * @description - This function will be called when the form is submitted (login / signup button is clicked)
+   */
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    if (isLoggedIn) {
+      console.log('Logged in', isLoggedIn, data);
+    } else {
+      console.log('Not logged in', isLoggedIn, data);
+    }
+  };
 
   return (
     <div className="relative flex h-screen w-screen flex-col bg-black md:items-center md:justify-center md:bg-transparent">
@@ -84,6 +95,7 @@ const Login = () => {
         <button
           className="w-full rounded bg-[#E50914] py-3 font-semibold"
           type="submit"
+          onClick={() => setIsLoggedIn(true)}
         >
           Login
         </button>
@@ -92,6 +104,7 @@ const Login = () => {
           <button
             className="cursor-pointer text-white hover:underline"
             type="submit"
+            onClick={() => setIsLoggedIn(false)}
           >
             Register now
           </button>
