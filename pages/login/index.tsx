@@ -4,6 +4,8 @@ import Image from 'next/image';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 
+import useAuth from '../../hooks/useAuth';
+
 // Define the type of the form inputs
 type Inputs = {
   email: string;
@@ -13,6 +15,8 @@ type Inputs = {
 /* Rules to disable the warning when using <img /> instead of <Image /> */
 /* eslint-disable @next/next/no-img-element */
 const Login = () => {
+  const { user, login, logout, register: signup, loading } = useAuth();
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const {
@@ -27,11 +31,11 @@ const Login = () => {
    * @description - This function will be called when the form is submitted (login / signup button is clicked)
    */
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
     if (isLoggedIn) {
-      console.log('Logged in', isLoggedIn, data);
+      await login(email, password);
     } else {
-      console.log('Not logged in', isLoggedIn, data);
+      await signup(email, password);
     }
   };
 

@@ -37,6 +37,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         email,
         password
       );
+      console.log('🚀 ~ file: index.tsx:40 ~ register ~ result', result);
       setUser(result.user);
       // Redirecting to the home page, after successful sign up
       router.push('/login');
@@ -59,6 +60,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     try {
       // Logging in a user with email and password
       const result = await signInWithEmailAndPassword(auth, email, password);
+      console.log('🚀 ~ file: index.tsx:63 ~ login ~ result', result);
       setUser(result.user);
       // Redirecting to the home page, after successful sign up
       router.push('/');
@@ -78,7 +80,8 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     setIsLoading(true);
     try {
       // Logging out the user
-      signOut(auth);
+      const result = await signOut(auth);
+      console.log('🚀 ~ file: index.tsx:84 ~ logout ~ result', result);
       setUser(null);
       // Redirecting to the home page, after successful sign up
       router.push('/login');
