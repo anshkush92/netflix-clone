@@ -20,6 +20,8 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
+
+  console.log('🚀 ~ file: index.tsx:22 ~ Login ~ errors', errors);
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   return (
@@ -44,13 +46,13 @@ const Login = () => {
       />
 
       <form
-        className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14"
+        className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-4 md:mt-0 md:max-w-md md:px-14"
         // "handleSubmit" will validate your inputs before invoking "onSubmit"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h1 className="text-4xl font-semibold">Login</h1>
-        <div className="space-y-4">
-          <label className="inline-block w-full">
+        <div className="flex flex-col gap-y-4">
+          <label className="w-full">
             {/* register your input into the hook by invoking the "register" function */}
             <input
               type="email"
@@ -58,8 +60,13 @@ const Login = () => {
               {...register('email', { required: true })}
               className={`input`}
             />
+            {errors.email && (
+              <p className="p-1 text-[13px] font-light  text-orange-500">
+                Please enter a valid email.
+              </p>
+            )}
           </label>
-          <label className="inline-block w-full">
+          <label className="w-full">
             {/* register your input into the hook by invoking the "register" function */}
             <input
               type="password"
@@ -67,6 +74,11 @@ const Login = () => {
               {...register('password', { required: true })}
               className={`input`}
             />
+            {errors.password && (
+              <p className="p-1 text-[13px] font-light  text-orange-500">
+                Your password must contain between 4 and 60 characters.
+              </p>
+            )}
           </label>
         </div>
         <button
