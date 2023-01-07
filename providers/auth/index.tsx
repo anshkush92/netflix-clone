@@ -21,7 +21,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const [isLoading, setIsLoading] = useState(false);
   // Getting the user type from the firebase
   const [user, setUser] = useState<User | null>(null);
-  console.log('🚀 ~ file: index.tsx:24 ~ AuthProvider ~ user', user);
 
   const router = useRouter();
 
