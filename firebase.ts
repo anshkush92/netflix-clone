@@ -19,8 +19,12 @@ const firebaseConfig = {
 // Initialize Firebase
 // Using this way to initialize only one instance of our firebase app
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+// Initialize Firestore
 const db = getFirestore();
+// Initialize Authentication
 const auth = getAuth();
 
+// Export the initialized firebase app
 export default app;
+// Export the initialized authentication and firestore
 export { auth, db };
