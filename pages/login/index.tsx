@@ -2,15 +2,30 @@ import { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 
+import { useForm, SubmitHandler } from 'react-hook-form';
+
+// Define the type of the form inputs
+type Inputs = {
+  email: string;
+  password: string;
+};
+
 /* Rules to disable the warning when using <img /> instead of <Image /> */
 /* eslint-disable @next/next/no-img-element */
 const Login = () => {
   const [loginDetails, setLoginDetails] = useState<object | null>(null);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
   return (
     <div className="relative flex h-screen w-screen flex-col bg-black md:items-center md:justify-center md:bg-transparent">
       <Head>
-        <title>Netflix</title>
+        <title>Login - Netlifx</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Image
@@ -28,14 +43,30 @@ const Login = () => {
         height={150}
       />
 
-      <form className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14">
+      <form
+        className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14"
+        // "handleSubmit" will validate your inputs before invoking "onSubmit"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <h1 className="text-4xl font-semibold">Login</h1>
         <div className="space-y-4">
           <label className="inline-block w-full">
-            <input type="email" placeholder="Email" className={`input`} />
+            {/* register your input into the hook by invoking the "register" function */}
+            <input
+              type="email"
+              placeholder="Email"
+              {...register('email', { required: true })}
+              className={`input`}
+            />
           </label>
           <label className="inline-block w-full">
-            <input type="password" placeholder="Password" className={`input`} />
+            {/* register your input into the hook by invoking the "register" function */}
+            <input
+              type="password"
+              placeholder="Password"
+              {...register('password', { required: true })}
+              className={`input`}
+            />
           </label>
         </div>
         <button
