@@ -3,11 +3,14 @@ import Link from 'next/link';
 import { AiOutlineSearch, AiOutlineBell } from 'react-icons/ai';
 
 import { navbarLinks } from '../../utils/constants';
+import useAuth from '../../hooks/useAuth';
 
 /* Rules to disable the warning when using <img /> instead of <Image /> */
 /* eslint-disable @next/next/no-img-element */
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const { logout } = useAuth();
 
   // This useEffet will be used to change the navbar color when the user scrolls down
   /**
@@ -58,13 +61,14 @@ export const Navbar = () => {
         <AiOutlineSearch className="hidden sm:inline w-6 h-6" />
         <p className="hidden lg:inline">Kids</p>
         <AiOutlineBell className="w-6 h-6" />
-        <Link href="/account">
-          <img
-            src="https://rb.gy/g1pwyx"
-            alt=""
-            className="cursor-pointer rounded"
-          />
-        </Link>
+        {/* <Link href="/account"> */}
+        <img
+          onClick={logout}
+          src="https://rb.gy/g1pwyx"
+          alt=""
+          className="cursor-pointer rounded"
+        />
+        {/* </Link> */}
       </div>
     </nav>
   );
