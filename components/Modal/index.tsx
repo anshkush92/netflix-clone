@@ -1,34 +1,50 @@
-import React from 'react';
-import { Box, Modal, Typography } from '@mui/material';
-import useModal from '../../hooks/useModal';
+import { useEffect, useState } from 'react';
 
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+import { Modal } from '@mui/material';
+import { AiFillCloseCircle } from 'react-icons/ai';
+
+import useModal from '../../hooks/useModal';
+import Video from '../../types/Video';
 
 const MovieModal = () => {
-  const { movie, isModalOpen, openModal, closeModal } = useModal();
+  const [videoLink, setVideoLink] = useState<string | null>(null);
+  const { movie, isModalOpen, closeModal } = useModal();
+
+  useEffect(() => {
+    if (!movie) return;
+
+    /**
+     * @function fetchMovieVideos - Fetches the Link of the Youtube Trailer of the Movie
+     * @return Promise youtubeTrailerLink
+     */
+    const fetchMovieVideos = async () => {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
+      );
+
+      const data = await res.json();
+      const officialTrailer = data.results.filter(
+        (video: Video) =>
+          video.type === 'Trailer' && video.site === 'YouTube' && video.official
+      );
+
+      const youtubeTrailerLink = `https://www.youtube.com/watch?v=${officialTrailer[0].key}`;
+      setVideoLink(youtubeTrailerLink);
+    };
+
+    fetchMovieVideos();
+  }, [movie]);
 
   return (
     <Modal open={isModalOpen} onClose={closeModal}>
-      <>
-        <Box sx={style}>
-          <Typography variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </>
+      <div>
+        <h2>{movie?.title}</h2>
+        <p>{movie?.overview}</p>
+        {videoLink && <a href={videoLink}>Trailer</a>}
+        <button onClick={closeModal}>
+          <AiFillCloseCircle className="h-8 w-8" />
+        </button>
+      </div>
     </Modal>
   );
 };
