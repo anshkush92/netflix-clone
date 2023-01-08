@@ -14,6 +14,7 @@ const Thumbnail = ({ movie }: Props) => {
   return (
     <div className="relative h-32 min-w-[8rem] overflow-y-visible md:min-w-[14rem] cursor-pointer  hover:z-[100] transition-all duration-200 ease-in-out">
       <Image
+        onClick={() => console.log('clicked', movie)}
         className="rounded-sm object-cover md:rounded h-full w-full"
         src={`${BASE_URL_IMAGE_ROWS}${
           movie?.backdrop_path || movie?.poster_path
