@@ -15,15 +15,10 @@ const style = {
 };
 
 const MovieModal = () => {
-  const { movie, isModalOpen } = useModal();
-  console.log(
-    '🚀 ~ file: index.tsx:19 ~ MovieModal ~ isModalOpen',
-    isModalOpen
-  );
-  console.log('🚀 ~ file: index.tsx:19 ~ MovieModal ~ movie', movie);
+  const { movie, isModalOpen, openModal, closeModal } = useModal();
 
   return (
-    <Modal open={isModalOpen}>
+    <Modal open={isModalOpen} onClose={closeModal}>
       <>
         <Box sx={style}>
           <Typography variant="h6" component="h2">

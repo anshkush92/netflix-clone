@@ -22,6 +22,12 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
     setIsModalOpen(false);
   };
 
+  console.log('🚀 ~ file: index.tsx:13 ~ ModalProvider ~ movie', movie);
+  console.log(
+    '🚀 ~ file: index.tsx:14 ~ ModalProvider ~ isModalOpen',
+    isModalOpen
+  );
+
   return (
     <ModalContext.Provider
       value={{ movie, isModalOpen, openModal, closeModal }}
