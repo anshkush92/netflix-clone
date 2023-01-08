@@ -18,8 +18,6 @@ const Home = ({
   romanceMovies,
   documentaries,
 }: Props) => {
-  const { isModalOpen } = useModal();
-
   return (
     <Layout>
       <div
