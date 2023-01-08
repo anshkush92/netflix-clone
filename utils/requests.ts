@@ -1,7 +1,7 @@
 import Movie from '../types/Movie';
+import { BASE_URL } from './constants';
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 console.log('🚀 ~ file: requests.ts:2 ~ API_KEY', API_KEY);
-const BASE_URL = 'https://api.themoviedb.org/3';
 
 const requests = {
   fetchTrending: `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US`,
