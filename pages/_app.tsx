@@ -9,17 +9,7 @@ import AuthProvider from '../providers/auth';
 import ModalProvider from '../providers/modal';
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { pathname } = useRouter();
-
-  return !nonLayoutPaths.includes(pathname) ? (
-    <AuthProvider>
-      <ModalProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ModalProvider>
-    </AuthProvider>
-  ) : (
+  return (
     <AuthProvider>
       <ModalProvider>
         <Component {...pageProps} />

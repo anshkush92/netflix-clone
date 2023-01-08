@@ -27,7 +27,6 @@ const MovieModal = () => {
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  console.log('🚀 ~ file: index.tsx:27 ~ MovieModal ~ isPlaying', isPlaying);
 
   const { movie, isModalOpen, closeModal } = useModal();
 
@@ -79,7 +78,7 @@ const MovieModal = () => {
     <Modal
       open={isModalOpen}
       onClose={closeModal}
-      className="fixed !top-7 left-0 right-0 z-50 mx-auto w-full max-w-5xl overflow-hidden overflow-y-scroll rounded-md scrollbar-hide pb-10"
+      className="fixed !top-7 left-0 right-0 z-50 mx-auto w-full max-w-5xl overflow-hidden overflow-y-scroll rounded-md scrollbar-hide md:pb-10"
     >
       <>
         <button
