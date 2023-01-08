@@ -10,7 +10,7 @@ import useAuth from '../../hooks/useAuth';
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const { logout } = useAuth();
+  const { user, logout } = useAuth();
 
   // This useEffet will be used to change the navbar color when the user scrolls down
   /**
@@ -62,12 +62,14 @@ export const Navbar = () => {
         <p className="hidden lg:inline">Kids</p>
         <AiOutlineBell className="w-6 h-6" />
         {/* <Link href="/account"> */}
-        <img
-          onClick={logout}
-          src="https://rb.gy/g1pwyx"
-          alt=""
-          className="cursor-pointer rounded"
-        />
+        {!user && (
+          <img
+            src="https://rb.gy/g1pwyx"
+            alt=""
+            className="cursor-pointer rounded"
+          />
+        )}
+        {user && <button onClick={logout}>Logout</button>}
         {/* </Link> */}
       </div>
     </nav>
