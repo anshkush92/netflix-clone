@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
+import { BASE_URL_IMAGE_ROWS } from '../../utils/constants';
 import { Modal } from '@mui/material';
 import ReactPlayer from 'react-player/youtube';
 import {
@@ -11,7 +13,7 @@ import {
 
 import {
   BsFillHandThumbsUpFill,
-  BsFillVolumeOffFill,
+  BsFillVolumeMuteFill,
   BsFillVolumeUpFill,
 } from 'react-icons/bs';
 
@@ -46,13 +48,12 @@ const MovieModal = () => {
       );
 
       const data = await res.json();
-      const officialTrailer = data.results.filter(
+      const officialTrailer = await data.results.filter(
         (video: Video) => video.type === 'Trailer' && video.site === 'YouTube'
       );
 
-      const youtubeTrailerLink =
-        officialTrailer.length &&
-        `https://www.youtube.com/watch?v=${officialTrailer[0]?.key}`;
+      const youtubeTrailerLink = await (officialTrailer.length &&
+        `https://www.youtube.com/watch?v=${officialTrailer[0]?.key}`);
 
       setVideoLink(youtubeTrailerLink);
     };
@@ -102,45 +103,55 @@ const MovieModal = () => {
           ) : (
             <div className="w-full h-full absolute flex items-center justify-center top-0 left-0 bg-[#181818]">
               {' '}
-              <h3>Trailer Not Found</h3>{' '}
+              <Image
+                className="rounded-sm object-cover md:rounded h-full w-full"
+                src={`${BASE_URL_IMAGE_ROWS}${
+                  movie?.backdrop_path || movie?.poster_path
+                }`}
+                alt={movie?.title || 'default'}
+                height={1080}
+                width={1920}
+              />
             </div>
           )}
-          <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
-            <div className="flex space-x-2">
+          {videoLink && (
+            <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
+              <div className="flex space-x-2">
+                <button
+                  className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6]"
+                  onClick={() => setIsPlaying((prvSt) => !prvSt)}
+                >
+                  {!isPlaying ? (
+                    <>
+                      <AiFillPlayCircle className="h-7 w-7 text-black" />
+                      Play
+                    </>
+                  ) : (
+                    <>
+                      <AiFillPauseCircle className="h-7 w-7 text-black" />
+                      Pause
+                    </>
+                  )}
+                </button>
+                <button className="modalButton">
+                  <AiOutlinePlusCircle className="h-7 w-7" />
+                </button>
+                <button className="modalButton">
+                  <BsFillHandThumbsUpFill className="h-6 w-6" />
+                </button>
+              </div>
               <button
-                className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6]"
-                onClick={() => setIsPlaying((prvSt) => !prvSt)}
+                className="modalButton"
+                onClick={() => setIsMuted((prvSt) => !prvSt)}
               >
-                {!isPlaying ? (
-                  <>
-                    <AiFillPlayCircle className="h-7 w-7 text-black" />
-                    Play
-                  </>
+                {isMuted ? (
+                  <BsFillVolumeMuteFill className="h-6 w-6" />
                 ) : (
-                  <>
-                    <AiFillPauseCircle className="h-7 w-7 text-black" />
-                    Pause
-                  </>
+                  <BsFillVolumeUpFill className="h-6 w-6" />
                 )}
               </button>
-              <button className="modalButton">
-                <AiOutlinePlusCircle className="h-7 w-7" />
-              </button>
-              <button className="modalButton">
-                <BsFillHandThumbsUpFill className="h-6 w-6" />
-              </button>
             </div>
-            <button
-              className="modalButton"
-              onClick={() => setIsMuted((prvSt) => !prvSt)}
-            >
-              {isMuted ? (
-                <BsFillVolumeOffFill className="h-6 w-6" />
-              ) : (
-                <BsFillVolumeUpFill className="h-6 w-6" />
-              )}
-            </button>
-          </div>
+          )}
         </div>
         <div className="flex space-x-16 rounded-b-md bg-[#181818] px-10 py-8">
           <div className="space-y-6 text-lg">

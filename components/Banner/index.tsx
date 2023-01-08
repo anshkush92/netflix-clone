@@ -53,7 +53,10 @@ const Banner = ({ netflixOriginals }: Props) => {
         </p>
 
         <div className="flex gap-x-3">
-          <button className="banner-buttons bg-white text-black">
+          <button
+            onClick={() => openModal(movie)}
+            className="banner-buttons bg-white text-black"
+          >
             <BsFillPlayFill className="banner-buttons-icon text-black" />
             Play
           </button>
