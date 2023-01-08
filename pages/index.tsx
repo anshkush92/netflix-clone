@@ -5,6 +5,7 @@ import Props from '../types/Home/Props';
 
 import Banner from '../components/Banner';
 import Row from '../components/Row';
+import MovieModal from '../components/Modal';
 
 const Home = ({
   netflixOriginals,
@@ -46,7 +47,12 @@ const Home = ({
           <Row title="Documentaries" movies={documentaries} />
         </section>
       </main>
-      {/* Modal */}
+
+      <section>
+        {/* This section is for showing the showing the modal on clicking over the movie */}
+        <MovieModal />
+      </section>
+
       <footer>{/* For showing the footer of the app */}</footer>
     </div>
   );
@@ -56,7 +62,7 @@ export default Home;
 
 /**
  * This function is used to fetch the data from the server side
- * @function {getServerSideProps} - The function to be used to fetch the data from the server side
+ * @function getServerSideProps - The function to be used to fetch the data from the server side
  */
 
 export const getServerSideProps = async () => {
