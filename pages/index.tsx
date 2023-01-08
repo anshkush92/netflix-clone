@@ -23,9 +23,7 @@ const Home = ({
   return (
     <Layout>
       <div
-        className={`h-screen bg-gradient-to-b from-gray-900/10  to-[#010511] ${
-          isModalOpen && '!h-screen overflow-hidden'
-        }`}
+        className={`h-screen bg-gradient-to-b from-gray-900/10  to-[#010511]`}
       >
         <Head>
           <title>Home - Netflix</title>
