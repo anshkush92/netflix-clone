@@ -1,5 +1,5 @@
 
-![Logo](https://rb.gy/ulxxee)
+![Logo](https://res.cloudinary.com/dicbnntfh/image/upload/v1679686868/spotify-clone/Netflix_2015_logo_oofa0a.svg)
 
 
 # [Netflix Clone](https://netflix-clone-anshkush92college.vercel.app/)
